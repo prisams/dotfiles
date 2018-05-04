@@ -1,5 +1,5 @@
 " Author: Priyanka Samanta
-" General leader mappings ---- {{{{
+" General leader mappings ---- {{{
 let mapleader = ","
 " }}}
 " General global mappings ----- {{{
@@ -26,6 +26,7 @@ endif
 
 " highlight all search results
 set hlsearch
+set incsearch
 
 " Remove query for terminal version
 " This prevents un-editable garbage characters from being printed
@@ -70,6 +71,8 @@ set number
 " General: Plugin Install --------------------- {{{
 
 call plug#begin('~/.vim/plugged')
+" Relative Numbering
+Plug 'myusuf3/numbers.vim'
 
 " Commands run in vim's virtual screen and don't pollute main shell
 Plug 'fcpg/vim-altscreen'
@@ -143,6 +146,11 @@ Plug 'cespare/vim-toml'
 "Rainbow parenthesis"
 Plug 'junegunn/rainbow_parentheses.vim'
 
+" Code prettifiers
+Plug 'b4b4r07/vim-sqlfmt'
+Plug 'tell-k/vim-autopep8'
+Plug 'maksimr/vim-jsbeautify'
+
 call plug#end()
 
 " }}}
@@ -180,7 +188,7 @@ augroup cursorline_setting
   autocmd WinLeave * setlocal nocursorline
 augroup END
 " }}}
-" Different file tpe recognistion ---- {{{
+" Different file type recognistion ---- {{{
 augroup filetype_recognition
   autocmd!
   autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown set filetype=markdown
@@ -249,6 +257,13 @@ try
   colorscheme PaperColor
 catch
 endtry
+
+" Python Highlight self and cls keyword in the class definitions
+augroup python_syntax
+  autocmd!
+  autocmd FileType python syn keyword pythonBuiltinObj self
+  autocmd FileType python syn keyword pythonBuiltinObj cls
+augroup end
 
 " }}}
 " General: Key remappings ----------------------- {{{
