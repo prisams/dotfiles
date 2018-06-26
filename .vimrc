@@ -38,7 +38,7 @@ filetype plugin indent on
 set showtabline=2
 set autoread
 
-# Demoing the merge conflict
+# Demoing the merge conflict phase 2
 
 " When you type the first tab hit will complete as much as possible,
 " the second tab hit will provide a list, the third and subsequent tabs
